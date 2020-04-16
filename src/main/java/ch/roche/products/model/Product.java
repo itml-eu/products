@@ -1,6 +1,7 @@
 package ch.roche.products.model;
 
 import static ch.roche.products.model.ProductStatus.DELETED;
+import static ch.roche.products.model.ProductStatus.PERSISTED;
 import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
 
@@ -44,7 +45,8 @@ public class Product {
 
     @PrePersist
     public void onPersist() {
-        dateCreated = ZonedDateTime.now();
+        this.dateCreated = ZonedDateTime.now();
+        this.status = PERSISTED;
     }
 
     public Product deleted() {

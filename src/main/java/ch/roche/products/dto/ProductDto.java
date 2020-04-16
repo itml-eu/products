@@ -1,6 +1,7 @@
 package ch.roche.products.dto;
 
 import java.math.BigDecimal;
+import java.time.ZonedDateTime;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -21,5 +22,7 @@ public class ProductDto {
     @Min(0)
     @NotNull
     private BigDecimal price;
+
+    private ZonedDateTime dateCreated;
 
 }

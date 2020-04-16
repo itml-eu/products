@@ -16,6 +16,7 @@ public class ProductConverter {
             .id(product.getId())
             .name(product.getName())
             .price(product.getPrice())
+            .dateCreated(product.getDateCreated())
             .build();
     }
 
@@ -31,7 +32,6 @@ public class ProductConverter {
         return Product.builder()
             .name(dto.getName())
             .price(dto.getPrice())
-            .status(PERSISTED)
             .build();
     }
 

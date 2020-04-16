@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Optional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -27,6 +28,7 @@ public class ProductService {
             .collect(toList());
     }
 
+    @Transactional
     public void deleteById(Long id) {
         final Optional<Product> byId = productRepository.findById(id);
         if (!byId.isPresent()) {
@@ -37,6 +39,7 @@ public class ProductService {
         }
     }
 
+    @Transactional
     public ProductDto updateProduct(ProductDto productDto) {
         final Optional<Product> byId = productRepository.findById(productDto.getId());
         if (!byId.isPresent()) {
@@ -50,6 +53,7 @@ public class ProductService {
         }
     }
 
+    @Transactional
     public ProductDto createProduct(ProductCreateDto productDto) {
         final Product created = productConverter.toEntity(productDto);
         final Product saved = productRepository.save(created);
