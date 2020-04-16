@@ -1,12 +1,13 @@
 package ch.roche.products.dto;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import lombok.Builder;
 import lombok.Value;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Value
 @Builder
@@ -23,6 +24,7 @@ public class ProductDto {
     @NotNull
     private BigDecimal price;
 
-    private ZonedDateTime dateCreated;
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME)
+    private LocalDateTime dateCreated;
 
 }

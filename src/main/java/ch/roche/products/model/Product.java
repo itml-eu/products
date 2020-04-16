@@ -6,7 +6,7 @@ import static javax.persistence.EnumType.STRING;
 import static javax.persistence.GenerationType.AUTO;
 
 import java.math.BigDecimal;
-import java.time.ZonedDateTime;
+import java.time.LocalDateTime;
 import javax.persistence.Entity;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
@@ -38,14 +38,14 @@ public class Product {
 
     private BigDecimal price;
 
-    private ZonedDateTime dateCreated;
+    private LocalDateTime dateCreated;
 
     @Enumerated(STRING)
     private ProductStatus status;
 
     @PrePersist
     public void onPersist() {
-        this.dateCreated = ZonedDateTime.now();
+        this.dateCreated = LocalDateTime.now();
         this.status = PERSISTED;
     }
 

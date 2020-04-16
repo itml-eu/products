@@ -1,7 +1,7 @@
 package ch.roche.products.util;
 
 import static ch.roche.products.model.ProductStatus.PERSISTED;
-import static java.time.ZonedDateTime.now;
+import static java.time.LocalDateTime.now;
 
 import ch.roche.products.model.Product;
 import java.math.BigDecimal;
