@@ -100,4 +100,19 @@ public class ProductRestControllerIT extends BaseMockMvc {
         assertThat(bottle.getName()).isEqualTo("bottle");
         assertThat(bottle.getPrice()).isEqualTo(new BigDecimal("1.00"));
     }
+
+    @Test
+    public void shouldDeleteProduct() throws Exception {
+        final Product book = productRepository.save(buildProduct("book", BigDecimal.TEN).deleted());
+
+        this.mockMvc.perform(get("/products/{id}", book.getId()))
+            .andDo(print())
+            .andExpect(status().isOk());
+
+        productRepository.save(book.deleted());
+
+        this.mockMvc.perform(get("/products/{id}", book.getId()))
+            .andDo(print())
+            .andExpect(status().isNotFound());
+    }
 }
